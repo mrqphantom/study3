@@ -17,11 +17,10 @@ public class Enemy : MonoBehaviour
     {
         m_rb.velocity = Vector2.down * speed;
     }
-    private void OntriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("DeadZone"))
         {
-            Debug.Log("don vi bi tieu diet");
             Destroy(gameObject);
         }
     }

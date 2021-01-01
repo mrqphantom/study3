@@ -43,11 +43,11 @@ public class Player : MonoBehaviour
             Instantiate(projectile, shootingPoint2.position, Quaternion.identity);
         }
     }
-    private void OnCollistionEnter2D(Collision2D col)
+    private void OnCollisionEnter2D(Collision2D col)
     {
         if(col.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("va cham nguoi choi");
+            Destroy(gameObject);
         }
     }
 }
