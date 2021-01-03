@@ -7,6 +7,9 @@ public class Projectile : MonoBehaviour
     public float timeToDestroy;
     Rigidbody2D m_rb;
     GameController m_gc;
+    
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +17,8 @@ public class Projectile : MonoBehaviour
         m_rb = GetComponent<Rigidbody2D>();
         m_gc = FindObjectOfType<GameController>();
         Destroy(gameObject, timeToDestroy);
+        
+        
     }
 
     // Update is called once per frame
@@ -25,10 +30,12 @@ public class Projectile : MonoBehaviour
     {
         if(col.CompareTag("Enemy"))
         {
+            
             m_gc.ScoreIncrement();
             Debug.Log("va cham enemy");
+            Destroy(col.gameObject,0.15f);
             Destroy(gameObject);
-            Destroy(col.gameObject);
+        
         }
 
     }

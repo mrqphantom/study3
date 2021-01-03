@@ -8,10 +8,14 @@ public class Player : MonoBehaviour
     public GameObject projectile;
     public Transform shootingPoint;
     public Transform shootingPoint2;
+    GameController m_gc;
+    public GameObject hit;
+    public AudioSource aus;
+    public AudioClip shootingsound;
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_gc = FindObjectOfType<GameController>();
     }
 
     // Update is called once per frame
@@ -32,7 +36,10 @@ public class Player : MonoBehaviour
     }
     public void shoot()
     {   if(projectile && shootingPoint)
-        {
+        {   if(aus && shootingsound)
+            {
+                aus.PlayOneShot(shootingsound);
+            }
             Instantiate(projectile, shootingPoint.position, Quaternion.identity);
         }
     }
@@ -43,11 +50,15 @@ public class Player : MonoBehaviour
             Instantiate(projectile, shootingPoint2.position, Quaternion.identity);
         }
     }
-    private void OnCollisionEnter2D(Collision2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.CompareTag("Enemy"))
+        if(col.CompareTag("Enemy"))
         {
-            Destroy(gameObject);
+            Debug.Log("o day bien mat nay");
+            Instantiate(hit, transform.position, Quaternion.identity);
+            Destroy(gameObject,0.085f);
+            Destroy(col.gameObject);
+
         }
     }
 }

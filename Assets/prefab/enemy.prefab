@@ -173,3 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  hit: {fileID: 2315125520001523696, guid: 039b2c022eb662b41a411ef2ef9ab423, type: 3}
+  soundboom: {fileID: 8300000, guid: dbda4cc07ce4aeb47bea077c9b9ba0a4, type: 3}
+  soundlose: {fileID: 8300000, guid: 152b5ba35a1cd9b479ff8997a051d7f3, type: 3}
+  delay: 0.05
