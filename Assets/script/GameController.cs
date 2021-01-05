@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -9,10 +11,13 @@ public class GameController : MonoBehaviour
     float m_spawnTime;
     int m_score;
     bool m_isGameover;
+    GameUI UI;
     // Start is called before the first frame update
     void Start()
     {
         m_spawnTime = 0;
+        UI = FindObjectOfType<GameUI>();
+        UI.SetscoreText("score: " + m_score);
     }
 
     // Update is called once per frame
@@ -20,6 +25,7 @@ public class GameController : MonoBehaviour
     {   if(m_isGameover)
         {
             m_spawnTime = 0;
+            UI.ShowGameoverPanel(true);
             return;
         }
         m_spawnTime -= Time.deltaTime;
@@ -38,6 +44,10 @@ public class GameController : MonoBehaviour
         {
             Instantiate(enemy, randPos, Quaternion.identity);
         }
+    }
+    public void Replay()
+    {
+        SceneManager.LoadScene("Pilotgame");
     }
     public void Setscore(int value)
     {

@@ -12,10 +12,13 @@ public class Player : MonoBehaviour
     public GameObject hit;
     public AudioSource aus;
     public AudioClip shootingsound;
+    
     // Start is called before the first frame update
     void Start()
     {
         m_gc = FindObjectOfType<GameController>();
+        
+       
     }
 
     // Update is called once per frame
